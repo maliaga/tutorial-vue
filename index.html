@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tutorial de Vue.js</title>
+</head>
+<body>
+
+<div id="app">
+    Hola {{ nombre }}
+    <br/>
+    Ir a : <a :href="url" target="_blank">{{ pagina }}</a>
+</div>
+
+<!-- Agrego librería javaScript de Vue-->
+    <script src="https://unpkg.com/vue"></script>
+
+    <script type="text/javascript">
+        let app = new Vue({
+            el: '#app',     // Elemento donde se ejecuta Vue
+            data: {         // Data 
+                nombre: 'Mario Aliaga',
+                url: 'http://marioaliaga.com',
+                pagina: 'Mi Página Personal'
+            }
+        });
+    </script>
+</body>
+</html>
