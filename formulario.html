@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulario con Vue.js</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" name="monbre" placeholder="Ingresa tu nombre" v-model="nombre"/>
+        <br />
+        <p>Tu nombre en mayúscula es: {{ nombre | uppercase }}</p> <!-- Variable nombre con un filtro aplicado -->
+        <br />
+        <form @submit.prevent="submit" action="" method="get">
+            <h2>¿Cual es tu Framework/Libreria favorita para JavaScript?</h2>
+            <input v-model="cursos" type="checkbox" name="cursos" id="angular" value="angular">
+            <label for="angular">Angular</label>
+            <input v-model="cursos" type="checkbox" name="cursos" id="react" value="react">
+            <label for="react">React</label>
+            <input v-model="cursos" type="checkbox" name="cursos" id="vue" value="vue">
+            <label for="vue">Vue.js</label>
+            <input v-model="cursos" type="checkbox" name="cursos" id="meteor" value="meteor">
+            <label for="meteor">Meteor</label>
+            <br />
+            <br />
+            <button type="submit">Enviar</button>
+        </form>
+
+    </div>
+
+
+
+    <script src="https://unpkg.com/vue"></script>
+    <script type="text/javascript">
+    let app = new Vue({
+        el: '#app',
+        data: {
+            nombre: '',
+            cursos: []  // arreglo de los cursos seleccionados
+        },
+        filters: {
+            uppercase: function (str) {
+                return str.toUpperCase() // transforma a mayúsculas el texto
+            }
+        },
+        methods: {
+            submit: function () {
+                console.log('llegó al submit')
+                console.log(this.cursos) // Muestra por consola los cursos seleccionados
+            }
+        }
+    })
+    </script>
+</body>
+</html>
