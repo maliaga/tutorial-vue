@@ -25,6 +25,11 @@
     </div>
 </div>
 
+<div id="app2"> <!-- Esta es otro segmento con Vue -->
+    <h1>{{ titulo | uppercase }}</h1>
+    <h2>{{ subtitulo | lowercase }}</h2>
+</div>
+
 <!-- Agrego librería javaScript de Vue-->
     <script src="https://unpkg.com/vue"></script>
 
@@ -38,6 +43,22 @@
                 urlGoogle: 'http://google.com',
                 paginaGoogle: 'Google',
                 mostrar: false // variable con la condición 
+            }
+        });
+
+        let app2 = new Vue({ // Segunda instancia de Vue.js
+            el: '#app2',
+            data: {
+                titulo: 'Este es un titulo',
+                subtitulo: 'Este es un subtitulo'
+            },
+            filters: {
+                uppercase: function(str){       // Función que transforma todo el texto en mayúsculas
+                    return str.toUpperCase()
+                },
+                lowercase: function(str){       // Función que transforma todo el texto en minúsculas
+                    return str.toLowerCase()
+                }
             }
         });
     </script>
