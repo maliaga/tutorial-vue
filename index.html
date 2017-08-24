@@ -27,7 +27,7 @@
 
 <div id="app2"> <!-- Esta es otro segmento con Vue -->
     <h1>{{ titulo | uppercase }}</h1>
-    <h2>{{ subtitulo | lowercase }}</h2>
+    <h2>{{ subtitulo | lowercase | capitalize}}</h2>
 </div>
 
 <!-- Agrego librería javaScript de Vue-->
@@ -58,6 +58,9 @@
                 },
                 lowercase: function(str){       // Función que transforma todo el texto en minúsculas
                     return str.toLowerCase()
+                },
+                capitalize: function (str) {    // Función que deja en mayúscula la primera letra
+                    return str.charAt(0).toUpperCase() + str.slice(1)
                 }
             }
         });
