@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Listar Elementos con Vue.js</title>
+</head>
+<body>
+    <div id="app">
+        <form @submit.prevent="submit" action="" method="get">
+            <h2>¿Cual es tu libreria favorita?</h2>
+            <br />
+            <br />
+            <template v-for="lib in librerias"> <!-- Template que no considera el navegador -->
+                <input v-model="libSelecionados" type="checkbox" v-bind:id="lib.value" v-bind:value="lib.value">
+                <label v-bind:for="lib.value">{{ lib.nombre }}</label>
+            </template>
+            <br />
+            <br />
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <!-- Agrego librería javaScript de Vue-->
+    <script src="https://unpkg.com/vue"></script>
+    <script type="text/javascript">
+    let app = new Vue({
+        el: '#app',
+        data: {
+            librerias: [    // Data con el que se hará el render
+                { nombre: 'Angular JS', value: 'angular'},
+                { nombre: 'React JS', value: 'react'},
+                { nombre: 'Vue JS', value: 'vue'},
+                { nombre: 'Meteor JS', value: 'meteor'},
+            ],
+            libSelecionados: []  // Arreglo para los cursos selecionados
+        },
+        methods: {
+            submit: function () {
+                console.log('Llegó al submit')
+                console.log(this.libSelecionados) // Los cur
+            }
+        }
+    })
+    </script>
+</body>
+</html>
