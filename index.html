@@ -11,7 +11,18 @@
 <div id="app">
     Hola {{ nombre }}
     <br/>
+    <div v-show="!mostrar"> <!-- La diferencia es que este objeto queda con el display none-->
+        <h1>Este en un título</h1>
+        <h2>Este es un subtítulo</h2>
+    </div>
+    <div v-show="mostrar">
+        Esto está oculto
+    </div>
+    <br/>
     Ir a : <a :href="url" target="_blank">{{ pagina }}</a>
+    <div v-if="mostrar"> <!-- If para eliminarlo del DOM Virtual-->
+    Ir a : <a :href="urlGoogle" target="_blank">{{ paginaGoogle }}</a>
+    </div>
 </div>
 
 <!-- Agrego librería javaScript de Vue-->
@@ -23,7 +34,10 @@
             data: {         // Data 
                 nombre: 'Mario Aliaga',
                 url: 'http://marioaliaga.com',
-                pagina: 'Mi Página Personal'
+                pagina: 'Mi Página Personal',
+                urlGoogle: 'http://google.com',
+                paginaGoogle: 'Google',
+                mostrar: false // variable con la condición 
             }
         });
     </script>
